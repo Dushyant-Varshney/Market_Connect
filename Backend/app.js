@@ -18,7 +18,7 @@ const productRoutes = require("./routes/product");
 const categoryRoutes = require("./routes/category");
 const paymentRoutes = require("./routes/payment");
 const analyticsRoutes = require('./routes/sellerAnalyticsRoutes.js');
-
+const assistantRoutes = require('./routes/shoppingAssistant');
 mongoose
   .connect(process.env.ATLASDB_URL)
   .then(() => console.log("MongoDB Atlas connected"))
@@ -38,6 +38,7 @@ app.use("/api/coupons", couponRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/assistant', assistantRoutes)
 
 app.use(cors({
   origin: process.env.FRONTEND_URL || 'http://localhost:3000',
